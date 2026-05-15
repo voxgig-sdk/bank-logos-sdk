@@ -1,0 +1,240 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Bank Logos API",
+    "description": "The Bank Logos API provides high-resolution logos for thousands of banks worldwide with a single API call, perfect for financial apps and fintech solutions. It enables users to transform confusing bank names and transaction codes into clear, recognizable visual identifiers.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://bankconv.com/bank-logos-api#doc"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.bankconv.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/logo": {
+      "get": {
+        "summary": "Get Bank Logo",
+        "description": "Retrieves a high-resolution logo for a specific bank. Provide bank identification information such as bank name, code, or identifier to receive the corresponding logo image.",
+        "operationId": "getBankLogo",
+        "parameters": [
+          {
+            "name": "bank",
+            "in": "query",
+            "description": "Bank name or identifier to retrieve the logo for",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "Chase"
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "description": "ISO country code to narrow down bank search",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$"
+            },
+            "example": "US"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Desired image format for the logo",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "png",
+                "svg",
+                "jpg"
+              ],
+              "default": "png"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Size of the logo image in pixels",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 32,
+              "maximum": 1024,
+              "default": 256
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved bank logo",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/svg+xml": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bank_name": {
+                      "type": "string",
+                      "description": "Official name of the bank"
+                    },
+                    "logo_url": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL to the bank logo image"
+                    },
+                    "country": {
+                      "type": "string",
+                      "description": "Country code where the bank operates"
+                    },
+                    "bank_code": {
+                      "type": "string",
+                      "description": "Official bank code or identifier"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Detailed error description"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - invalid or missing API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Authentication error details"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bank logo not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Details about the missing bank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    },
+                    "retry_after": {
+                      "type": "integer",
+                      "description": "Number of seconds to wait before retrying"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Internal error details"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "API key for authentication. Required for all requests."
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "logo": {
+      "LOGO00": {
+        "bank_code": "s28",
+        "bank_name": "s29",
+        "country": "s2a",
+        "logo_url": "s2b"
+      },
+      "LOGO01": {
+        "bank_code": "s50",
+        "bank_name": "s51",
+        "country": "s52",
+        "logo_url": "s53"
+      },
+      "LOGO02": {
+        "bank_code": "s78",
+        "bank_name": "s79",
+        "country": "s7a",
+        "logo_url": "s7b"
+      }
+    }
+  },
+  "new": {
+    "logo": {
+      "logo_ref01": {
+        "bank_code": "sa0",
+        "bank_name": "sa1",
+        "country": "sa2",
+        "logo_url": "sa3"
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+# Entity: logo
+
+main: kit: entity: logo: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "bank_code"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "bank_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "country"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "logo_url"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "logo"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "Chase"
+                kind: "query"
+                name: "bank"
+                orig: "bank"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "US"
+                kind: "query"
+                name: "country"
+                orig: "country"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "png"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 256
+                kind: "query"
+                name: "size"
+                orig: "size"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/logo"
+          parts: [
+            "logo"
+          ]
+          select: {
+            exist: [
+              "bank"
+              "country"
+              "format"
+              "size"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
