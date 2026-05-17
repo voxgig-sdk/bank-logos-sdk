@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/bank-logos-sdk"
+	sdk "github.com/voxgig-sdk/bank-logos-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

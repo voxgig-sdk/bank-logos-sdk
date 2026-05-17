@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/bank-logos-sdk"
-	"github.com/voxgig-sdk/bank-logos-sdk/core"
+	sdk "github.com/voxgig-sdk/bank-logos-sdk/go"
+	"github.com/voxgig-sdk/bank-logos-sdk/go/core"
 )
 
 func TestLogoDirect(t *testing.T) {

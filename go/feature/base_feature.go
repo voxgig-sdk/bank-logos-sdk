@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/bank-logos-sdk/core"
+	"github.com/voxgig-sdk/bank-logos-sdk/go/core"
 )
 
 type BaseFeature struct {

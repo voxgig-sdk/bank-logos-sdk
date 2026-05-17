@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/bank-logos-sdk"
-	"github.com/voxgig-sdk/bank-logos-sdk/core"
+	sdk "github.com/voxgig-sdk/bank-logos-sdk/go"
+	"github.com/voxgig-sdk/bank-logos-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/bank-logos-sdk/go/utility/struct"
 )
 
 func TestLogoEntity(t *testing.T) {

@@ -1,10 +1,10 @@
 package voxgigbanklogossdk
 
 import (
-	"github.com/voxgig-sdk/bank-logos-sdk/core"
-	"github.com/voxgig-sdk/bank-logos-sdk/entity"
-	"github.com/voxgig-sdk/bank-logos-sdk/feature"
-	_ "github.com/voxgig-sdk/bank-logos-sdk/utility"
+	"github.com/voxgig-sdk/bank-logos-sdk/go/core"
+	"github.com/voxgig-sdk/bank-logos-sdk/go/entity"
+	"github.com/voxgig-sdk/bank-logos-sdk/go/feature"
+	_ "github.com/voxgig-sdk/bank-logos-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

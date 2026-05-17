@@ -5,19 +5,22 @@
         "bank_code": "s28",
         "bank_name": "s29",
         "country": "s2a",
-        "logo_url": "s2b"
+        "logo_url": "s2b",
+        "id": "LOGO00"
       },
       "LOGO01": {
         "bank_code": "s50",
         "bank_name": "s51",
         "country": "s52",
-        "logo_url": "s53"
+        "logo_url": "s53",
+        "id": "LOGO01"
       },
       "LOGO02": {
         "bank_code": "s78",
         "bank_name": "s79",
         "country": "s7a",
-        "logo_url": "s7b"
+        "logo_url": "s7b",
+        "id": "LOGO02"
       }
     }
   },
