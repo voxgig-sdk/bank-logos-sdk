@@ -85,7 +85,6 @@ function logo_basic_setup($extra)
         "BANKLOGOS_TEST_LOGO_ENTID" => $idmap,
         "BANKLOGOS_TEST_LIVE" => "FALSE",
         "BANKLOGOS_TEST_EXPLAIN" => "FALSE",
-        "BANKLOGOS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +96,6 @@ function logo_basic_setup($extra)
     if ($env["BANKLOGOS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["BANKLOGOS_APIKEY"],
             ],
             $extra ?? [],
         ]);

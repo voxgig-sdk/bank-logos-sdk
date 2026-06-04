@@ -16,7 +16,17 @@
           }
         ],
         "title": "Bank Logos API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Fetch high-resolution logos for thousands of banks worldwide by domain, for fintech and financial apps",
+        "homepage": "https://bankconv.com",
+        "docs_url": "https://freepublicapis.com/bank-logos-api",
+        "license_short": "No explicit licence published; check with BankConv before redistribution",
+        "license_md": "- No licence is published alongside the Bank Logos API.\n- Logos belong to the respective banks and are likely subject to trademark restrictions.\n- Confirm acceptable use with [BankConv](https://bankconv.com) before redistributing or embedding in commercial products.",
+        "about_md": "The Bank Logos API is a small image-serving endpoint operated by [BankConv](https://bankconv.com), the same team behind the BankConv bank-statement conversion service. It is designed for fintech and financial applications that need to turn raw bank names or transaction strings into recognisable visual identifiers.\n\nWhat you get from the API:\n\n- A single image endpoint of the form `https://logo.bankconv.com/{domain}` (for example `https://logo.bankconv.com/americanexpress.com`) that returns a high-resolution logo for the bank associated with that domain.\n- Coverage spanning thousands of banks worldwide, drawn from the same institution catalogue used by BankConv's statement converter.\n\nOperational notes: the service is documented on [freepublicapis.com](https://freepublicapis.com/bank-logos-api) as an unauthenticated GET endpoint with CORS disabled. At the time of cataloguing, freepublicapis.com reports the endpoint as unreliable, so test availability before depending on it in production.",
+        "entity_desc": {
+          "logo": "A bank logo image looked up by the bank's domain name, served from `https://logo.bankconv.com/{domain}` as a high-resolution image suitable for UI display."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -24,7 +34,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "logo": {

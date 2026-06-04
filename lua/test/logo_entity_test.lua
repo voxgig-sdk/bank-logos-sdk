@@ -91,7 +91,6 @@ function logo_basic_setup(extra)
     ["BANKLOGOS_TEST_LOGO_ENTID"] = idmap,
     ["BANKLOGOS_TEST_LIVE"] = "FALSE",
     ["BANKLOGOS_TEST_EXPLAIN"] = "FALSE",
-    ["BANKLOGOS_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ function logo_basic_setup(extra)
   if env["BANKLOGOS_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["BANKLOGOS_APIKEY"],
       },
       extra or {},
     })
