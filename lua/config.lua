@@ -14,6 +14,9 @@ local function make_config()
     },
     options = {
       base = "https://api.bankconv.com",
+      auth = {
+        prefix = "Bearer",
+      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -25,77 +28,79 @@ local function make_config()
       ["logo"] = {
         ["fields"] = {
           {
+            ["active"] = true,
             ["name"] = "bank_code",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 0,
           },
           {
+            ["active"] = true,
             ["name"] = "bank_name",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 1,
           },
           {
+            ["active"] = true,
             ["name"] = "country",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 2,
           },
           {
+            ["active"] = true,
             ["name"] = "logo_url",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 3,
           },
         },
         ["name"] = "logo",
         ["op"] = {
           ["load"] = {
+            ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
+                      ["active"] = true,
                       ["example"] = "Chase",
                       ["kind"] = "query",
                       ["name"] = "bank",
                       ["orig"] = "bank",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = "US",
                       ["kind"] = "query",
                       ["name"] = "country",
                       ["orig"] = "country",
                       ["reqd"] = false,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = "png",
                       ["kind"] = "query",
                       ["name"] = "format",
                       ["orig"] = "format",
                       ["reqd"] = false,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = 256,
                       ["kind"] = "query",
                       ["name"] = "size",
                       ["orig"] = "size",
                       ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -116,11 +121,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
             },
-            ["input"] = "data",
             ["key$"] = "load",
           },
         },

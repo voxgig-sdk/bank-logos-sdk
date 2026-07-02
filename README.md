@@ -1,19 +1,8 @@
 # BankLogos SDK
 
-Fetch high-resolution logos for thousands of banks worldwide by domain, for fintech and financial apps
+Bank Logos API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Bank Logos API
-
-The Bank Logos API is a small image-serving endpoint operated by [BankConv](https://bankconv.com), the same team behind the BankConv bank-statement conversion service. It is designed for fintech and financial applications that need to turn raw bank names or transaction strings into recognisable visual identifiers.
-
-What you get from the API:
-
-- A single image endpoint of the form `https://logo.bankconv.com/{domain}` (for example `https://logo.bankconv.com/americanexpress.com`) that returns a high-resolution logo for the bank associated with that domain.
-- Coverage spanning thousands of banks worldwide, drawn from the same institution catalogue used by BankConv's statement converter.
-
-Operational notes: the service is documented on [freepublicapis.com](https://freepublicapis.com/bank-logos-api) as an unauthenticated GET endpoint with CORS disabled. At the time of cataloguing, freepublicapis.com reports the endpoint as unreliable, so test availability before depending on it in production.
 
 ## Try it
 
@@ -47,27 +36,31 @@ gem install bank-logos-sdk
 luarocks install bank-logos-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { BankLogosSDK } from 'bank-logos'
 
-const client = new BankLogosSDK({})
+const client = new BankLogosSDK({
+  apikey: process.env.BANK-LOGOS_APIKEY,
+})
 
+// Load logo data
+const logo = await client.Logo().load({})
+console.log(logo.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -97,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Logo** | A bank logo image looked up by the bank's domain name, served from `https://logo.bankconv.com/{domain}` as a high-resolution image suitable for UI display. | `/logo` |
+| **Logo** |  | `/logo` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -107,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from banklogos_sdk import BankLogosSDK
 
-client = BankLogosSDK({})
+client = BankLogosSDK({
+    "apikey": os.environ.get("BANK-LOGOS_APIKEY"),
+})
 
 
 # Load a specific logo
-logo, err = client.Logo(None).load(
-    {"id": "example_id"}, None
-)
+logo, err = client.Logo().load({"id": "example_id"})
+print(logo)
 ```
 
 ### PHP
@@ -124,13 +119,14 @@ logo, err = client.Logo(None).load(
 <?php
 require_once 'banklogos_sdk.php';
 
-$client = new BankLogosSDK([]);
+$client = new BankLogosSDK([
+    "apikey" => getenv("BANK-LOGOS_APIKEY"),
+]);
 
 
 // Load a specific logo
-[$logo, $err] = $client->Logo(null)->load(
-    ["id" => "example_id"], null
-);
+[$logo, $err] = $client->Logo()->load(["id" => "example_id"]);
+print_r($logo);
 ```
 
 ### Golang
@@ -138,8 +134,13 @@ $client = new BankLogosSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/bank-logos-sdk/go"
 
-client := sdk.NewBankLogosSDK(map[string]any{})
+client := sdk.NewBankLogosSDK(map[string]any{
+    "apikey": os.Getenv("BANK-LOGOS_APIKEY"),
+})
 
+// Load logo data
+logo, err := client.Logo(nil).Load(map[string]any{}, nil)
+fmt.Println(logo)
 ```
 
 ### Ruby
@@ -147,13 +148,14 @@ client := sdk.NewBankLogosSDK(map[string]any{})
 ```ruby
 require_relative "BankLogos_sdk"
 
-client = BankLogosSDK.new({})
+client = BankLogosSDK.new({
+  "apikey" => ENV["BANK-LOGOS_APIKEY"],
+})
 
 
 # Load a specific logo
-logo, err = client.Logo(nil).load(
-  { "id" => "example_id" }, nil
-)
+logo, err = client.Logo().load({ "id" => "example_id" })
+puts logo
 ```
 
 ### Lua
@@ -161,13 +163,14 @@ logo, err = client.Logo(nil).load(
 ```lua
 local sdk = require("bank-logos_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("BANK-LOGOS_APIKEY"),
+})
 
 
 -- Load a specific logo
-local logo, err = client:Logo(nil):load(
-  { id = "example_id" }, nil
-)
+local logo, err = client:Logo():load({ id = "example_id" })
+print(logo)
 ```
 
 ## Unit testing in offline mode
@@ -186,25 +189,21 @@ const result = await client.Logo().load({ id: 'test01' })
 ### Python
 
 ```python
-client = BankLogosSDK.test(None, None)
-result, err = client.Logo(None).load(
-    {"id": "test01"}, None
-)
+client = BankLogosSDK.test()
+result, err = client.Logo().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = BankLogosSDK::test(null, null);
-[$result, $err] = $client->Logo(null)->load(
-    ["id" => "test01"], null
-);
+$client = BankLogosSDK::test();
+[$result, $err] = $client->Logo()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Logo(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -213,19 +212,15 @@ result, err := client.Logo(nil).Load(
 ### Ruby
 
 ```ruby
-client = BankLogosSDK.test(nil, nil)
-result, err = client.Logo(nil).load(
-  { "id" => "test01" }, nil
-)
+client = BankLogosSDK.test
+result, err = client.Logo().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Logo(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Logo():load({ id = "test01" })
 ```
 
 ## How it works
@@ -329,15 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Bank Logos API
-
-- Upstream: [https://bankconv.com](https://bankconv.com)
-- API docs: [https://freepublicapis.com/bank-logos-api](https://freepublicapis.com/bank-logos-api)
-
-- No licence is published alongside the Bank Logos API.
-- Logos belong to the respective banks and are likely subject to trademark restrictions.
-- Confirm acceptable use with [BankConv](https://bankconv.com) before redistributing or embedding in commercial products.
 
 ---
 

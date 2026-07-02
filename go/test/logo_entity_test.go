@@ -117,6 +117,7 @@ func logoBasicSetup(extra map[string]any) *entityTestSetup {
 		"BANKLOGOS_TEST_LOGO_ENTID": idmap,
 		"BANKLOGOS_TEST_LIVE":      "FALSE",
 		"BANKLOGOS_TEST_EXPLAIN":   "FALSE",
+		"BANKLOGOS_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["BANKLOGOS_TEST_LOGO_ENTID"])
@@ -127,6 +128,7 @@ func logoBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["BANKLOGOS_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["BANKLOGOS_APIKEY"],
 			},
 			extra,
 		})

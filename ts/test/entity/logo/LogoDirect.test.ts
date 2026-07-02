@@ -78,12 +78,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'BANKLOGOS_TEST_LOGO_ENTID': {},
     'BANKLOGOS_TEST_LIVE': 'FALSE',
+    'BANKLOGOS_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.BANKLOGOS_TEST_LIVE
 
   if (live) {
     const client = new BankLogosSDK({
+      apikey: env.BANKLOGOS_APIKEY,
     })
 
     let idmap: any = env['BANKLOGOS_TEST_LOGO_ENTID']

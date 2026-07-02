@@ -73,12 +73,14 @@ function logo_direct_setup($mockres)
     $env = Runner::env_override([
         "BANKLOGOS_TEST_LOGO_ENTID" => [],
         "BANKLOGOS_TEST_LIVE" => "FALSE",
+        "BANKLOGOS_APIKEY" => "NONE",
     ]);
 
     $live = $env["BANKLOGOS_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["BANKLOGOS_APIKEY"],
         ];
         $client = new BankLogosSDK($merged_opts);
         return [

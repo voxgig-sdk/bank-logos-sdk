@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'BANK_LOGOS_TEST_LOGO_ENTID': idmap,
     'BANK_LOGOS_TEST_LIVE': 'FALSE',
     'BANK_LOGOS_TEST_EXPLAIN': 'FALSE',
+    'BANK_LOGOS_APIKEY': 'NONE',
   })
 
   idmap = env['BANK_LOGOS_TEST_LOGO_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new BankLogosSDK(merge([
       {
+        apikey: env.BANK_LOGOS_APIKEY,
       },
       extra
     ]))

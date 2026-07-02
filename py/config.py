@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://api.bankconv.com",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -26,77 +29,79 @@ def make_config():
       "logo": {
         "fields": [
           {
+            "active": True,
             "name": "bank_code",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "bank_name",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "country",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "logo_url",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "logo",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": "Chase",
                       "kind": "query",
                       "name": "bank",
                       "orig": "bank",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "US",
                       "kind": "query",
                       "name": "country",
                       "orig": "country",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "png",
                       "kind": "query",
                       "name": "format",
                       "orig": "format",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": 256,
                       "kind": "query",
                       "name": "size",
                       "orig": "size",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                   ],
                 },
@@ -117,11 +122,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
