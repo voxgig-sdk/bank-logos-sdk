@@ -10,13 +10,13 @@ The Ruby SDK for the BankLogos API — an entity-oriented client using idiomatic
 
 ## Install
 ```bash
-gem install bank-logos-sdk
+gem install voxgig-sdk-bank-logos
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "bank-logos-sdk"
+gem "voxgig-sdk-bank-logos"
 ```
 
 Then run:

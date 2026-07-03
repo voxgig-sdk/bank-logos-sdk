@@ -10,7 +10,7 @@ The Python SDK for the BankLogos API — an entity-oriented client following Pyt
 
 ## Install
 ```bash
-pip install bank-logos-sdk
+pip install voxgig-sdk-bank-logos
 ```
 
 Or install from source:

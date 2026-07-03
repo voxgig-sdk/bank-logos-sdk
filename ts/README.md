@@ -10,7 +10,7 @@ The TypeScript SDK for the BankLogos API — a type-safe, entity-oriented client
 
 ## Install
 ```bash
-npm install bank-logos
+npm install @voxgig-sdk/bank-logos
 ```
 ## Tutorial: your first API call
 

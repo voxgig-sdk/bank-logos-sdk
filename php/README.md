@@ -10,7 +10,7 @@ The PHP SDK for the BankLogos API — an entity-oriented client using PHP conven
 
 ## Install
 ```bash
-composer require voxgig/bank-logos-sdk
+composer require voxgig-sdk/bank-logos
 ```
 
 

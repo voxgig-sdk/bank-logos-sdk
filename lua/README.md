@@ -10,7 +10,7 @@ The Lua SDK for the BankLogos API — an entity-oriented client using Lua conven
 
 ## Install
 ```bash
-luarocks install bank-logos-sdk
+luarocks install voxgig-sdk-bank-logos
 ```
 
 If the module is not yet published, add the source directory to
