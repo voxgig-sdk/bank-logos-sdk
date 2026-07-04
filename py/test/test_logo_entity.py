@@ -49,8 +49,7 @@ class TestLogoEntity:
         # LOAD
         logo_ref01_ent = client.Logo(None)
         logo_ref01_match_dt0 = {}
-        logo_ref01_data_dt0_loaded, err = logo_ref01_ent.load(logo_ref01_match_dt0, None)
-        assert err is None
+        logo_ref01_data_dt0_loaded = logo_ref01_ent.load(logo_ref01_match_dt0, None)
         assert logo_ref01_data_dt0_loaded is not None
 
 

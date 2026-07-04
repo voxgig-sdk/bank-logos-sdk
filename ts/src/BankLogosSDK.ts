@@ -2,6 +2,8 @@
 
 import { LogoEntity } from './entity/LogoEntity'
 
+export type * from './BankLogosTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class BankLogosSDK {
 
 
 
+  _logo?: LogoEntity
+
+  // Idiomatic facade: `client.logo.list()` / `client.logo.load({ id })`.
+  get logo(): LogoEntity {
+    return (this._logo ??= new LogoEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.logo` instead. */
   Logo(data?: any) {
     const self = this
     return new LogoEntity(self,data)

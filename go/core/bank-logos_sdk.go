@@ -245,6 +245,9 @@ func (sdk *BankLogosSDK) Direct(fetchargs map[string]any) (map[string]any, error
 }
 
 
+// Logo returns a Logo entity bound to this client.
+// Idiomatic usage: client.Logo(nil).List(nil, nil) or
+// client.Logo(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *BankLogosSDK) Logo(data map[string]any) BankLogosEntity {
 	return NewLogoEntityFunc(sdk, data)
 }

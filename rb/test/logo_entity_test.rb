@@ -42,8 +42,7 @@ class LogoEntityTest < Minitest::Test
     # LOAD
     logo_ref01_ent = client.Logo(nil)
     logo_ref01_match_dt0 = {}
-    logo_ref01_data_dt0_loaded, err = logo_ref01_ent.load(logo_ref01_match_dt0, nil)
-    assert_nil err
+    logo_ref01_data_dt0_loaded = logo_ref01_ent.load(logo_ref01_match_dt0, nil)
     assert !logo_ref01_data_dt0_loaded.nil?
 
   end

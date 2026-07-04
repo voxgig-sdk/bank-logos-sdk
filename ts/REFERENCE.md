@@ -110,7 +110,7 @@ Alias for `BankLogosSDK.test()`.
 ## LogoEntity
 
 ```ts
-const logo = client.Logo()
+const logo = client.logo
 ```
 
 ### Fields
@@ -129,7 +129,7 @@ const logo = client.Logo()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Logo().load({ id: 'logo_id' })
+const result = await client.logo.load({ id: 'logo_id' })
 ```
 
 ### Common Methods
