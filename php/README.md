@@ -35,9 +35,10 @@ $client = new BankLogosSDK([
 
 ```php
 try {
-    $result = $client->logo()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Logo record (throws on error).
+    $logo = $client->Logo()->load(["id" => "example_id"]);
+    print_r($logo);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -83,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = BankLogosSDK::test();
+$client = BankLogosSDK::test([
+    "entity" => ["logo" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->logo()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$logo = $client->Logo()->load(["id" => "test01"]);
+print_r($logo);
 ```
 
 ### Use a custom fetch function
@@ -230,7 +235,7 @@ API path: `/logo`
 
 ### Logo
 
-Create an instance: `const logo = client.logo`
+Create an instance: `$logo = $client->Logo();`
 
 #### Operations
 
@@ -249,8 +254,9 @@ Create an instance: `const logo = client.logo`
 
 #### Example: Load
 
-```ts
-const logo = await client.logo.load({ id: 'logo_id' })
+```php
+// load() returns the bare Logo record (throws on error).
+$logo = $client->Logo()->load(["id" => "logo_id"]);
 ```
 
 
@@ -325,7 +331,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$logo = $client->logo();
+$logo = $client->Logo();
 $logo->load(["id" => "example_id"]);
 
 // $logo->dataGet() now returns the loaded logo data

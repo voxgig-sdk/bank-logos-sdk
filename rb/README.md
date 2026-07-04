@@ -34,8 +34,9 @@ client = BankLogosSDK.new({
 
 ```ruby
 begin
-  result = client.logo.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Logo record (raises on error).
+  logo = client.Logo.load({ "id" => "example_id" })
+  puts logo
 rescue => err
   warn "load failed: #{err}"
 end
@@ -82,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = BankLogosSDK.test
+client = BankLogosSDK.test({
+  "entity" => { "logo" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.logo.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+logo = client.Logo.load({ "id" => "test01" })
+puts logo
 ```
 
 ### Use a custom fetch function
@@ -225,7 +230,7 @@ API path: `/logo`
 
 ### Logo
 
-Create an instance: `const logo = client.logo`
+Create an instance: `logo = client.Logo`
 
 #### Operations
 
@@ -244,8 +249,9 @@ Create an instance: `const logo = client.logo`
 
 #### Example: Load
 
-```ts
-const logo = await client.logo.load({ id: 'logo_id' })
+```ruby
+# load returns the bare Logo record (raises on error).
+logo = client.Logo.load({ "id" => "logo_id" })
 ```
 
 
@@ -320,7 +326,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-logo = client.logo
+logo = client.Logo
 logo.load({ "id" => "example_id" })
 
 # logo.data_get now returns the loaded logo data

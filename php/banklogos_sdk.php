@@ -233,10 +233,10 @@ class BankLogosSDK
 
     private $_logo = null;
 
-    // Idiomatic facade: $client->logo()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Logo() (PHP method
-    // names are case-insensitive).
-    public function logo($data = null)
+    // Canonical facade: $client->Logo()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->logo()
+    // resolves here too.
+    public function Logo($data = null)
     {
         require_once __DIR__ . '/entity/logo_entity.php';
         if ($data === null) {

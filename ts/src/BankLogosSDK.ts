@@ -204,14 +204,7 @@ class BankLogosSDK {
 
 
 
-  _logo?: LogoEntity
-
-  // Idiomatic facade: `client.logo.list()` / `client.logo.load({ id })`.
-  get logo(): LogoEntity {
-    return (this._logo ??= new LogoEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.logo` instead. */
+  // Entity access: `client.Logo().list()` / `client.Logo().load({ id })`.
   Logo(data?: any) {
     const self = this
     return new LogoEntity(self,data)

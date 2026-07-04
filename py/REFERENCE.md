@@ -81,7 +81,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## LogoEntity
 
 ```python
-logo = client.logo
+logo = client.Logo()
 ```
 
 ### Fields
@@ -100,7 +100,7 @@ logo = client.logo
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.logo.load({"id": "logo_id"})
+result = client.Logo().load({"id": "logo_id"})
 ```
 
 ### Common Methods

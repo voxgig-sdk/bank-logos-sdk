@@ -208,13 +208,7 @@ class BankLogosSDK
   end
 
 
-  # Idiomatic facade: client.logo.list / client.logo.load({ "id" => ... })
-  def logo
-    require_relative 'entity/logo_entity'
-    @logo ||= LogoEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.logo instead.
+  # Canonical facade: client.Logo.list / client.Logo.load({ "id" => ... })
   def Logo(data = nil)
     require_relative 'entity/logo_entity'
     LogoEntity.new(self, data)

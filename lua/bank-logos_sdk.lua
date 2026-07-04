@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:logo():list() / client:logo():load({ id = ... })
-function BankLogosSDK:logo(data)
+-- Idiomatic facade: client:Logo():list() / client:Logo():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function BankLogosSDK:Logo(data)
   local EntityMod = require("entity.logo_entity")
   if data == nil then
     if self._logo == nil then
@@ -253,12 +254,6 @@ function BankLogosSDK:logo(data)
     end
     return self._logo
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:logo() instead.
-function BankLogosSDK:Logo(data)
-  local EntityMod = require("entity.logo_entity")
   return EntityMod.new(self, data)
 end
 

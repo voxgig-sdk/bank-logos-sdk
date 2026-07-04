@@ -28,9 +28,9 @@ const client = new BankLogosSDK({
   apikey: process.env.BANK_LOGOS_APIKEY,
 })
 
-// Load logo data
-const logo = await client.logo.load({})
-console.log(logo.data)
+// Load logo data (returns a Logo)
+const logo = await client.Logo().load()
+console.log(logo)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -89,8 +89,8 @@ client = BankLogosSDK({
 })
 
 
-# Load a specific logo
-logo = client.logo.load({"id": "example_id"})
+# Load a specific logo (returns the record, raises on error)
+logo = client.Logo().load({"id": "example_id"})
 print(logo)
 ```
 
@@ -105,8 +105,8 @@ $client = new BankLogosSDK([
 ]);
 
 
-// Load a specific logo
-$logo = $client->logo()->load(["id" => "example_id"]);
+// Load a specific logo (returns the bare record; throws on error)
+$logo = $client->Logo()->load(["id" => "example_id"]);
 print_r($logo);
 ```
 
@@ -134,8 +134,8 @@ client = BankLogosSDK.new({
 })
 
 
-# Load a specific logo
-logo = client.logo.load({ "id" => "example_id" })
+# Load a specific logo (returns the bare record; raises on error)
+logo = client.Logo.load({ "id" => "example_id" })
 puts logo
 ```
 
@@ -150,7 +150,7 @@ local client = sdk.new({
 
 
 -- Load a specific logo
-local logo, err = client:logo():load({ id = "example_id" })
+local logo, err = client:Logo():load({ id = "example_id" })
 print(logo)
 ```
 
@@ -163,22 +163,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = BankLogosSDK.test()
-const result = await client.logo.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const logo = await client.Logo().load({ id: 'test01' })
+// logo is a bare Logo populated with mock data
+console.log(logo)
 ```
 
 ### Python
 
 ```python
 client = BankLogosSDK.test()
-result = client.logo.load({"id": "test01"})
+logo = client.Logo().load({"id": "test01"})
+print(logo)
 ```
 
 ### PHP
 
 ```php
-$client = BankLogosSDK::test();
-$result = $client->logo()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = BankLogosSDK::test([
+    "entity" => ["logo" => ["test01" => ["id" => "test01"]]],
+]);
+$logo = $client->Logo()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -193,15 +198,18 @@ result, err := client.Logo(nil).Load(
 ### Ruby
 
 ```ruby
-client = BankLogosSDK.test
-result = client.logo.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = BankLogosSDK.test({
+  "entity" => { "logo" => { "test01" => { "id" => "test01" } } },
+})
+logo = client.Logo.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:logo():load({ id = "test01" })
+local result, err = client:Logo():load({ id = "test01" })
 ```
 
 ## How it works
@@ -249,6 +257,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

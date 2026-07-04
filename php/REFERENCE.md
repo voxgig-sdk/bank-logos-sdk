@@ -86,7 +86,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## LogoEntity
 
 ```php
-$logo = $client->logo();
+$logo = $client->Logo();
 ```
 
 ### Fields
@@ -105,7 +105,7 @@ $logo = $client->logo();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->logo()->load(["id" => "logo_id"]);
+$result = $client->Logo()->load(["id" => "logo_id"]);
 ```
 
 ### Common Methods

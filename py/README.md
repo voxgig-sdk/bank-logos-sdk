@@ -36,10 +36,12 @@ client = BankLogosSDK({
 
 ### 3. Load a logo
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.logo.load({"id": "example_id"})
-    print(result)
+    logo = client.Logo().load({"id": "example_id"})
+    print(logo)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -87,8 +89,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = BankLogosSDK.test()
 
-result = client.logo.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+logo = client.Logo().load({"id": "test01"})
+# logo contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -226,7 +229,7 @@ API path: `/logo`
 
 ### Logo
 
-Create an instance: `const logo = client.logo`
+Create an instance: `logo = client.Logo()`
 
 #### Operations
 
@@ -245,8 +248,8 @@ Create an instance: `const logo = client.logo`
 
 #### Example: Load
 
-```ts
-const logo = await client.logo.load({ id: 'logo_id' })
+```python
+logo = client.Logo().load({"id": "logo_id"})
 ```
 
 
@@ -320,7 +323,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-logo = client.logo
+logo = client.Logo()
 logo.load({"id": "example_id"})
 
 # logo.data_get() now returns the loaded logo data

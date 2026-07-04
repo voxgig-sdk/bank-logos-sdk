@@ -220,25 +220,15 @@ class BankLogosSDK:
         }
 
 
-    @property
-    def logo(self):
-        """Idiomatic facade: client.logo.list() / client.logo.load({"id": ...})."""
-        from entity.logo_entity import LogoEntity
-        cached = getattr(self, "_logo", None)
-        if cached is None:
-            cached = LogoEntity(self, None)
-            self._logo = cached
-        return cached
-
-    def Logo(self, data=None):
-        # Deprecated: use client.logo instead.
+    def Logo(self, data=None) -> "LogoEntity":
+        """Entity factory: client.Logo().list({}) / client.Logo().load({"id": ...})."""
         from entity.logo_entity import LogoEntity
         return LogoEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "BankLogosSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class BankLogosSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.logo_entity import LogoEntity

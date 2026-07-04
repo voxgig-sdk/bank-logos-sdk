@@ -84,7 +84,7 @@ same parameters as `direct()`.
 ## LogoEntity
 
 ```lua
-local logo = client:logo(nil)
+local logo = client:Logo(nil)
 ```
 
 ### Fields
@@ -103,7 +103,7 @@ local logo = client:logo(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:logo():load({ id = "logo_id" })
+local result, err = client:Logo():load({ id = "logo_id" })
 ```
 
 ### Common Methods
