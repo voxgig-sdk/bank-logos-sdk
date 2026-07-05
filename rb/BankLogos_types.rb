@@ -29,7 +29,7 @@ Logo = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Logo#load (any subset of Logo fields).
+# Request payload for Logo#load.
 #
 # @!attribute [rw] bank_code
 #   @return [String, nil]

@@ -8,7 +8,7 @@ Complete API reference for the BankLogos Python SDK.
 ### Constructor
 
 ```python
-from bank-logos_sdk import BankLogosSDK
+from banklogos_sdk import BankLogosSDK
 
 client = BankLogosSDK(options)
 ```
@@ -88,10 +88,10 @@ logo = client.Logo()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bank_code` | ``$STRING`` | No |  |
-| `bank_name` | ``$STRING`` | No |  |
-| `country` | ``$STRING`` | No |  |
-| `logo_url` | ``$STRING`` | No |  |
+| `bank_code` | `str` | No |  |
+| `bank_name` | `str` | No |  |
+| `country` | `str` | No |  |
+| `logo_url` | `str` | No |  |
 
 ### Operations
 
@@ -100,7 +100,7 @@ logo = client.Logo()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Logo().load({"id": "logo_id"})
+result = client.Logo().load()
 ```
 
 ### Common Methods

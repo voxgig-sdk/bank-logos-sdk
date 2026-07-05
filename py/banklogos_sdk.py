@@ -221,7 +221,7 @@ class BankLogosSDK:
 
 
     def Logo(self, data=None) -> "LogoEntity":
-        """Entity factory: client.Logo().list({}) / client.Logo().load({"id": ...})."""
+        """Entity factory: client.Logo().list() / client.Logo().load({"id": ...})."""
         from entity.logo_entity import LogoEntity
         return LogoEntity(self, data)
 

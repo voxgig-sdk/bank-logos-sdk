@@ -21,7 +21,7 @@ class Logo
     public ?string $logo_url = null;
 }
 
-/** Match filter for Logo#load (any subset of Logo fields). */
+/** Request payload for Logo#load. */
 class LogoLoadMatch
 {
     public ?string $bank_code = null;

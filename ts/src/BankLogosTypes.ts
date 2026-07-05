@@ -12,5 +12,10 @@ export interface Logo {
   logo_url?: string
 }
 
-export type LogoLoadMatch = Partial<Logo>
+export interface LogoLoadMatch {
+  bank_code?: string
+  bank_name?: string
+  country?: string
+  logo_url?: string
+}
 

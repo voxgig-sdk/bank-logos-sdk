@@ -16,8 +16,7 @@ type Logo struct {
 	LogoUrl *string `json:"logo_url,omitempty"`
 }
 
-// LogoLoadMatch mirrors the logo fields as an all-optional match
-// filter (Go analog of Partial<Logo>).
+// LogoLoadMatch is the typed request payload for Logo.LoadTyped.
 type LogoLoadMatch struct {
 	BankCode *string `json:"bank_code,omitempty"`
 	BankName *string `json:"bank_name,omitempty"`

@@ -8,7 +8,7 @@ Complete API reference for the BankLogos PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/bank-logos_sdk.php';
+require_once __DIR__ . '/banklogos_sdk.php';
 
 $client = new BankLogosSDK($options);
 ```
@@ -46,11 +46,11 @@ $client = BankLogosSDK::test();
 
 Create a new `LogoEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): BankLogosUtility`
 
 Return a copy of the SDK utility object.
 
@@ -93,10 +93,10 @@ $logo = $client->Logo();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bank_code` | ``$STRING`` | No |  |
-| `bank_name` | ``$STRING`` | No |  |
-| `country` | ``$STRING`` | No |  |
-| `logo_url` | ``$STRING`` | No |  |
+| `bank_code` | `string` | No |  |
+| `bank_name` | `string` | No |  |
+| `country` | `string` | No |  |
+| `logo_url` | `string` | No |  |
 
 ### Operations
 
@@ -105,24 +105,24 @@ $logo = $client->Logo();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Logo()->load(["id" => "logo_id"]);
+$result = $client->Logo()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -131,7 +131,7 @@ Set the entity match criteria.
 Create a new `LogoEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

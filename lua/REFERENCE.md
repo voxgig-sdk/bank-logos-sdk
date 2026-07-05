@@ -91,10 +91,10 @@ local logo = client:Logo(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bank_code` | ``$STRING`` | No |  |
-| `bank_name` | ``$STRING`` | No |  |
-| `country` | ``$STRING`` | No |  |
-| `logo_url` | ``$STRING`` | No |  |
+| `bank_code` | `string` | No |  |
+| `bank_name` | `string` | No |  |
+| `country` | `string` | No |  |
+| `logo_url` | `string` | No |  |
 
 ### Operations
 
@@ -103,7 +103,7 @@ local logo = client:Logo(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Logo():load({ id = "logo_id" })
+local result, err = client:Logo():load()
 ```
 
 ### Common Methods

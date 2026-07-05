@@ -8,7 +8,7 @@ Complete API reference for the BankLogos Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'bank-logos_sdk'
+require_relative 'BankLogos_sdk'
 
 client = BankLogosSDK.new(options)
 ```
@@ -94,10 +94,10 @@ logo = client.Logo
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bank_code` | ``$STRING`` | No |  |
-| `bank_name` | ``$STRING`` | No |  |
-| `country` | ``$STRING`` | No |  |
-| `logo_url` | ``$STRING`` | No |  |
+| `bank_code` | `String` | No |  |
+| `bank_name` | `String` | No |  |
+| `country` | `String` | No |  |
+| `logo_url` | `String` | No |  |
 
 ### Operations
 
@@ -106,7 +106,7 @@ logo = client.Logo
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Logo.load({ "id" => "logo_id" })
+result = client.Logo.load()
 ```
 
 ### Common Methods
