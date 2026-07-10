@@ -16,7 +16,7 @@ module BankLogosConfig
       "options" => {
         "base" => "https://api.bankconv.com",
         "auth" => {
-          "prefix" => "Bearer",
+          "prefix" => "",
         },
         "headers" => {
           "content-type" => "application/json",

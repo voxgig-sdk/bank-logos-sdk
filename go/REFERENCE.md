@@ -92,6 +92,7 @@ same parameters as `Direct()`.
 
 ```go
 logo := client.Logo(nil)
+fmt.Println(logo.GetName()) // "logo"
 ```
 
 ### Fields
@@ -111,6 +112,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Logo(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

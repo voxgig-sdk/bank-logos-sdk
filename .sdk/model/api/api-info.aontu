@@ -8,15 +8,22 @@ main: {
         url: "https://bankconv.com/bank-logos-api#doc"
       }
       description: "The Bank Logos API provides high-resolution logos for thousands of banks worldwide with a single API call, perfect for financial apps and fintech solutions. It enables users to transform confusing bank names and transaction codes into clear, recognizable visual identifiers."
+      security: {
+        in: "header"
+        name: "X-API-Key"
+        prefix: ""
+        scheme: "ApiKeyAuth"
+        type: "apiKey"
+      }
       servers: [
         {
           description: "Production server"
           url: "https://api.bankconv.com"
         }
       ]
+      summary: "The Bank Logos API provides high-resolution logos for thousands of banks worldwide with a single API call, perfect for financial apps and fintech solutions."
       title: "Bank Logos API"
       version: "1.0.0"
+      website: "https://bankconv.com"
     }
   }
-}
-

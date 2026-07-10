@@ -39,7 +39,7 @@ class Config {
     base: 'https://api.bankconv.com',
 
     auth: {
-      prefix: 'Bearer',
+      prefix: '',
     },
 
     headers: {
