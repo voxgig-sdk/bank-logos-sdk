@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- BankLogos SDK exists test
 
 local sdk = require("bank-logos_sdk")
 
