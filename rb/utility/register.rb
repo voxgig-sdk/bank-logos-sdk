@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ BankLogosUtility.registrar = ->(u) {
   u.prepare_params = BankLogosUtilities::PrepareParams
   u.prepare_path = BankLogosUtilities::PreparePath
   u.prepare_query = BankLogosUtilities::PrepareQuery
+  u.graphql_body = BankLogosUtilities::GraphqlBody
+  u.graphql_errors = BankLogosUtilities::GraphqlErrors
   u.result_basic = BankLogosUtilities::ResultBasic
   u.result_body = BankLogosUtilities::ResultBody
   u.result_headers = BankLogosUtilities::ResultHeaders

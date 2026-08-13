@@ -19,11 +19,15 @@ import {
 describe('LogoDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when BANKLOGOS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('BANKLOGOS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when BANK_LOGOS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('BANK_LOGOS_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new BankLogosSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -76,19 +80,19 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'BANKLOGOS_TEST_LOGO_ENTID': {},
-    'BANKLOGOS_TEST_LIVE': 'FALSE',
-    'BANKLOGOS_APIKEY': 'NONE',
+    'BANK_LOGOS_TEST_LOGO_ENTID': {},
+    'BANK_LOGOS_TEST_LIVE': 'FALSE',
+    'BANK_LOGOS_APIKEY': 'NONE',
   })
 
-  const live = 'TRUE' === env.BANKLOGOS_TEST_LIVE
+  const live = 'TRUE' === env.BANK_LOGOS_TEST_LIVE
 
   if (live) {
     const client = new BankLogosSDK({
-      apikey: env.BANKLOGOS_APIKEY,
+      apikey: env.BANK_LOGOS_APIKEY,
     })
 
-    let idmap: any = env['BANKLOGOS_TEST_LOGO_ENTID']
+    let idmap: any = env['BANK_LOGOS_TEST_LOGO_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

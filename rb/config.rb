@@ -105,6 +105,7 @@ module BankLogosConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/logo",
                   "parts" => [

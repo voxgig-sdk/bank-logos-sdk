@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from banklogos_sdk.utility.voxgig_struct import voxgig_struct as vs
 from banklogos_sdk import BankLogosSDK
-from core import helpers
+from banklogos_sdk.core import helpers
 from test import runner
 
 
@@ -61,16 +61,16 @@ def _logo_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "BANKLOGOS_TEST_LOGO_ENTID": {},
-        "BANKLOGOS_TEST_LIVE": "FALSE",
-        "BANKLOGOS_APIKEY": "NONE",
+        "BANK_LOGOS_TEST_LOGO_ENTID": {},
+        "BANK_LOGOS_TEST_LIVE": "FALSE",
+        "BANK_LOGOS_APIKEY": "NONE",
     })
 
-    live = env.get("BANKLOGOS_TEST_LIVE") == "TRUE"
+    live = env.get("BANK_LOGOS_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("BANKLOGOS_APIKEY"),
+            "apikey": env.get("BANK_LOGOS_APIKEY"),
         }
         client = BankLogosSDK(merged_opts)
         return {

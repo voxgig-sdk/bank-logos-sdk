@@ -123,7 +123,8 @@ Create a mock client for unit testing — no server required:
 const client = BankLogosSDK.test()
 
 const logo = await client.Logo().load()
-// logo is a bare entity populated with mock response data
+// logo is the entity, populated with mock response data
+// — call logo.data() for the record itself
 console.log(logo)
 ```
 

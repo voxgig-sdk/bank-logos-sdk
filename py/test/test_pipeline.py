@@ -16,11 +16,11 @@
 import pytest
 
 from banklogos_sdk import BankLogosSDK
-from core.error import BankLogosError
-from core.result import BankLogosResult
-from core.response import BankLogosResponse
-from core.spec import BankLogosSpec
-from feature.base_feature import BankLogosBaseFeature
+from banklogos_sdk.core.error import BankLogosError
+from banklogos_sdk.core.result import BankLogosResult
+from banklogos_sdk.core.response import BankLogosResponse
+from banklogos_sdk.core.spec import BankLogosSpec
+from banklogos_sdk.feature.base_feature import BankLogosBaseFeature
 
 
 def _client():

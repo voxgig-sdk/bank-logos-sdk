@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# BankLogos SDK exists test
 
 import pytest
 from banklogos_sdk import BankLogosSDK

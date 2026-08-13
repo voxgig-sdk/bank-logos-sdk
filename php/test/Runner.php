@@ -43,8 +43,8 @@ class BankLogosTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('BANKLOGOS_TEST_LIVE');
-        $override = self::getenv('BANKLOGOS_TEST_OVERRIDE');
+        $live = self::getenv('BANK_LOGOS_TEST_LIVE');
+        $override = self::getenv('BANK_LOGOS_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class BankLogosTestRunner
             }
         }
 
-        $explain = self::getenv('BANKLOGOS_TEST_EXPLAIN');
+        $explain = self::getenv('BANK_LOGOS_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['BANKLOGOS_TEST_EXPLAIN'] = $explain;
+            $m['BANK_LOGOS_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

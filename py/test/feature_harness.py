@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import BankLogosControl
-from core.error import BankLogosError
-from core.result import BankLogosResult
-from core.spec import BankLogosSpec
+from banklogos_sdk.config import make_config
+from banklogos_sdk.features import _make_feature
+from banklogos_sdk.core.control import BankLogosControl
+from banklogos_sdk.core.error import BankLogosError
+from banklogos_sdk.core.result import BankLogosResult
+from banklogos_sdk.core.spec import BankLogosSpec
 
 
 # True when this SDK was generated with the named feature.

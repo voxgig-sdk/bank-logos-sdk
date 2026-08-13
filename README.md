@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = BankLogosSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = BankLogosSDK.test({
+  entity: {
+    logo: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const logo = await client.Logo().load()
-// logo is a bare Logo populated with mock data
+// logo is the Logo entity, populated with mock data
+// — call logo.data() for the record itself
 console.log(logo)
 ```
 
@@ -189,7 +198,7 @@ $client = new BankLogosSDK([
 ]);
 
 
-// Load a specific logo (returns the bare record; throws on error)
+// Load a specific logo (returns the ENTITY; call data_get() for the record; throws on error)
 $logo = $client->Logo()->load();
 print_r($logo);
 ```
@@ -221,7 +230,7 @@ client = BankLogosSDK.new({
 })
 
 
-# Load a specific logo (returns the bare record; raises on error)
+# Load a specific logo (returns the ENTITY; call data_get for the record)
 logo = client.Logo.load()
 puts logo
 ```
@@ -357,6 +366,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://bankconv.com/bank-logos-api#doc](https://bankconv.com/bank-logos-api#doc)
 

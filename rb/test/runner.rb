@@ -23,8 +23,8 @@ module BankLogosTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("BANKLOGOS_TEST_LIVE")
-    override = getenv("BANKLOGOS_TEST_OVERRIDE")
+    live = getenv("BANK_LOGOS_TEST_LIVE")
+    override = getenv("BANK_LOGOS_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module BankLogosTestRunner
       end
     end
 
-    explain = getenv("BANKLOGOS_TEST_EXPLAIN")
-    m["BANKLOGOS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("BANK_LOGOS_TEST_EXPLAIN")
+    m["BANK_LOGOS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

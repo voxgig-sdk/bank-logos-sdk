@@ -36,7 +36,7 @@ client = BankLogosSDK.new({
 
 ```ruby
 begin
-  # load returns the bare Logo record (raises on error).
+  # load returns the ENTITY — call data_get for the Logo record (raises on error).
   logo = client.Logo.load()
   puts logo
 rescue => err
@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = BankLogosSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 logo = client.Logo.load()
 puts logo
 ```
@@ -274,7 +275,7 @@ Create an instance: `logo = client.Logo`
 #### Example: Load
 
 ```ruby
-# load returns the bare Logo record (raises on error).
+# load returns the ENTITY — call data_get for the Logo record (raises on error).
 logo = client.Logo.load()
 ```
 
