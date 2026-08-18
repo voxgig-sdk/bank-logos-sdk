@@ -40,7 +40,7 @@ class BankLogosSDK
         $utility = new BankLogosUtility();
         $this->_utility = $utility;
 
-        $config = BankLogosConfig::make_config();
+        $config = BankLogosConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

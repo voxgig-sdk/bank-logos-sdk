@@ -28,7 +28,7 @@ class BankLogosSDK
     utility = BankLogosUtility.new
     @_utility = utility
 
-    config = BankLogosConfig.make_config
+    config = BankLogosConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
