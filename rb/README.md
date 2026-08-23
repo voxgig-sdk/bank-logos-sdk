@@ -239,10 +239,10 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `bank_code` |  |
-| `bank_name` |  |
-| `country` |  |
-| `logo_url` |  |
+| `bank_code` | Official bank code or identifier |
+| `bank_name` | Official name of the bank |
+| `country` | Country code where the bank operates |
+| `logo_url` | URL to the bank logo image |
 
 Operations: Load.
 
@@ -267,10 +267,10 @@ Create an instance: `logo = client.Logo`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bank_code` | `String` |  |
-| `bank_name` | `String` |  |
-| `country` | `String` |  |
-| `logo_url` | `String` |  |
+| `bank_code` | `String` | Official bank code or identifier |
+| `bank_name` | `String` | Official name of the bank |
+| `country` | `String` | Country code where the bank operates |
+| `logo_url` | `String` | URL to the bank logo image |
 
 #### Example: Load
 

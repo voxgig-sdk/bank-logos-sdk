@@ -88,10 +88,10 @@ logo = client.Logo()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bank_code` | `str` | No |  |
-| `bank_name` | `str` | No |  |
-| `country` | `str` | No |  |
-| `logo_url` | `str` | No |  |
+| `bank_code` | `str` | No | Official bank code or identifier |
+| `bank_name` | `str` | No | Official name of the bank |
+| `country` | `str` | No | Country code where the bank operates |
+| `logo_url` | `str` | No | URL to the bank logo image |
 
 ### Operations
 

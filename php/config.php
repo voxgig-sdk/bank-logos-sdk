@@ -33,6 +33,9 @@ class BankLogosConfig
         return [
             "main" => [
                 "name" => "BankLogos",
+                "slug" => "bank-logos",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -58,18 +61,22 @@ class BankLogosConfig
           'fields' => [
             [
               'name' => 'bank_code',
+              'short' => 'Official bank code or identifier',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'bank_name',
+              'short' => 'Official name of the bank',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'country',
+              'short' => 'Country code where the bank operates',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'logo_url',
+              'short' => 'URL to the bank logo image',
               'type' => '`$STRING`',
             ],
           ],

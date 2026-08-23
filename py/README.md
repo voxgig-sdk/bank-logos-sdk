@@ -246,10 +246,10 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `bank_code` |  |
-| `bank_name` |  |
-| `country` |  |
-| `logo_url` |  |
+| `bank_code` | Official bank code or identifier |
+| `bank_name` | Official name of the bank |
+| `country` | Country code where the bank operates |
+| `logo_url` | URL to the bank logo image |
 
 Operations: Load.
 
@@ -274,10 +274,10 @@ Create an instance: `logo = client.Logo()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bank_code` | `str` |  |
-| `bank_name` | `str` |  |
-| `country` | `str` |  |
-| `logo_url` | `str` |  |
+| `bank_code` | `str` | Official bank code or identifier |
+| `bank_name` | `str` | Official name of the bank |
+| `country` | `str` | Country code where the bank operates |
+| `logo_url` | `str` | URL to the bank logo image |
 
 #### Example: Load
 

@@ -99,10 +99,10 @@ fmt.Println(logo.GetName()) // "logo"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bank_code` | `string` | No |  |
-| `bank_name` | `string` | No |  |
-| `country` | `string` | No |  |
-| `logo_url` | `string` | No |  |
+| `bank_code` | `string` | No | Official bank code or identifier |
+| `bank_name` | `string` | No | Official name of the bank |
+| `country` | `string` | No | Country code where the bank operates |
+| `logo_url` | `string` | No | URL to the bank logo image |
 
 ### Operations
 

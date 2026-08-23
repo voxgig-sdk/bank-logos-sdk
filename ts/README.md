@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -291,10 +291,10 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `bank_code` |  |
-| `bank_name` |  |
-| `country` |  |
-| `logo_url` |  |
+| `bank_code` | Official bank code or identifier |
+| `bank_name` | Official name of the bank |
+| `country` | Country code where the bank operates |
+| `logo_url` | URL to the bank logo image |
 
 Operations: load.
 
@@ -319,10 +319,10 @@ Create an instance: `const logo = client.Logo()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bank_code` | `string` |  |
-| `bank_name` | `string` |  |
-| `country` | `string` |  |
-| `logo_url` | `string` |  |
+| `bank_code` | `string` | Official bank code or identifier |
+| `bank_name` | `string` | Official name of the bank |
+| `country` | `string` | Country code where the bank operates |
+| `logo_url` | `string` | URL to the bank logo image |
 
 #### Example: Load
 

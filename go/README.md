@@ -6,7 +6,7 @@ The Golang SDK for the BankLogos API — an entity-oriented client using standar
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Logo(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -263,10 +263,10 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"bank_code"` |  |
-| `"bank_name"` |  |
-| `"country"` |  |
-| `"logo_url"` |  |
+| `"bank_code"` | Official bank code or identifier |
+| `"bank_name"` | Official name of the bank |
+| `"country"` | Country code where the bank operates |
+| `"logo_url"` | URL to the bank logo image |
 
 Operations: Load.
 
@@ -291,10 +291,10 @@ Create an instance: `logo := client.Logo(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bank_code` | `string` |  |
-| `bank_name` | `string` |  |
-| `country` | `string` |  |
-| `logo_url` | `string` |  |
+| `bank_code` | `string` | Official bank code or identifier |
+| `bank_name` | `string` | Official name of the bank |
+| `country` | `string` | Country code where the bank operates |
+| `logo_url` | `string` | URL to the bank logo image |
 
 #### Example: Load
 

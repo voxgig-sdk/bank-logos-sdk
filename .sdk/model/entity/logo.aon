@@ -8,21 +8,25 @@ main: kit: entity: logo: {
     {
       name: "bank_code"
       req: false
+      short: "Official bank code or identifier"
       type: "`$STRING`"
     }
     {
       name: "bank_name"
       req: false
+      short: "Official name of the bank"
       type: "`$STRING`"
     }
     {
       name: "country"
       req: false
+      short: "Country code where the bank operates"
       type: "`$STRING`"
     }
     {
       name: "logo_url"
       req: false
+      short: "URL to the bank logo image"
       type: "`$STRING`"
     }
   ]

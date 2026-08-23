@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "BankLogos",
+			"slug": "bank-logos",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -36,18 +39,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "bank_code",
+						"short": "Official bank code or identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "bank_name",
+						"short": "Official name of the bank",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "country",
+						"short": "Country code where the bank operates",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "logo_url",
+						"short": "URL to the bank logo image",
 						"type": "`$STRING`",
 					},
 				},

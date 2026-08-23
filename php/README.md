@@ -249,10 +249,10 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `bank_code` |  |
-| `bank_name` |  |
-| `country` |  |
-| `logo_url` |  |
+| `bank_code` | Official bank code or identifier |
+| `bank_name` | Official name of the bank |
+| `country` | Country code where the bank operates |
+| `logo_url` | URL to the bank logo image |
 
 Operations: Load.
 
@@ -277,10 +277,10 @@ Create an instance: `$logo = $client->Logo();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bank_code` | `string` |  |
-| `bank_name` | `string` |  |
-| `country` | `string` |  |
-| `logo_url` | `string` |  |
+| `bank_code` | `string` | Official bank code or identifier |
+| `bank_name` | `string` | Official name of the bank |
+| `country` | `string` | Country code where the bank operates |
+| `logo_url` | `string` | URL to the bank logo image |
 
 #### Example: Load
 

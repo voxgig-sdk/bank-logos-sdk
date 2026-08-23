@@ -94,10 +94,10 @@ logo = client.Logo
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bank_code` | `String` | No |  |
-| `bank_name` | `String` | No |  |
-| `country` | `String` | No |  |
-| `logo_url` | `String` | No |  |
+| `bank_code` | `String` | No | Official bank code or identifier |
+| `bank_name` | `String` | No | Official name of the bank |
+| `country` | `String` | No | Country code where the bank operates |
+| `logo_url` | `String` | No | URL to the bank logo image |
 
 ### Operations
 
