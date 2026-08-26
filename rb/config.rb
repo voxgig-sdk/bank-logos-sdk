@@ -28,6 +28,7 @@ module BankLogosConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
