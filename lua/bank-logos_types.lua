@@ -13,10 +13,10 @@
 ---@field logo_url? string
 
 ---@class LogoLoadMatch
----@field bank_code? string
----@field bank_name? string
+---@field bank string
 ---@field country? string
----@field logo_url? string
+---@field format? string
+---@field size? number
 
 local M = {}
 

@@ -24,9 +24,9 @@ class Logo
 /** Request payload for Logo#load. */
 class LogoLoadMatch
 {
-    public ?string $bank_code = null;
-    public ?string $bank_name = null;
+    public string $bank;
     public ?string $country = null;
-    public ?string $logo_url = null;
+    public ?string $format = null;
+    public ?int $size = null;
 }
 

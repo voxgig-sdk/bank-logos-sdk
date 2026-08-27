@@ -37,7 +37,7 @@ client = BankLogosSDK.new({
 ```ruby
 begin
   # load returns the ENTITY — call data_get for the Logo record (raises on error).
-  logo = client.Logo.load()
+  logo = client.Logo.load({ "bank" => "example_bank" })
   puts logo
 rescue => err
   warn "load failed: #{err}"
@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  logo = client.Logo.load()
+  logo = client.Logo.load({ "bank" => "example" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -121,7 +121,7 @@ client = BankLogosSDK.test
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
-logo = client.Logo.load()
+logo = client.Logo.load({ "bank" => "example" })
 puts logo
 ```
 
@@ -276,8 +276,31 @@ Create an instance: `logo = client.Logo`
 
 ```ruby
 # load returns the ENTITY — call data_get for the Logo record (raises on error).
-logo = client.Logo.load()
+logo = client.Logo.load({ "bank" => "bank" })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -357,7 +380,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 logo = client.Logo
-logo.load()
+logo.load({ "bank" => "example" })
 
 # logo.data_get now returns the logo data from the last load
 # logo.match_get returns the last match criteria

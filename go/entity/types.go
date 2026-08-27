@@ -22,10 +22,10 @@ type Logo struct {
 
 // LogoLoadMatch is the typed request payload for Logo.LoadTyped.
 type LogoLoadMatch struct {
-	BankCode *string `json:"bank_code,omitempty"`
-	BankName *string `json:"bank_name,omitempty"`
+	Bank string `json:"bank"`
 	Country *string `json:"country,omitempty"`
-	LogoUrl *string `json:"logo_url,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Size *int `json:"size,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

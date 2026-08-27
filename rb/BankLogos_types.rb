@@ -31,22 +31,22 @@ Logo = Struct.new(
 
 # Request payload for Logo#load.
 #
-# @!attribute [rw] bank_code
-#   @return [String, nil]
-#
-# @!attribute [rw] bank_name
-#   @return [String, nil]
+# @!attribute [rw] bank
+#   @return [String]
 #
 # @!attribute [rw] country
 #   @return [String, nil]
 #
-# @!attribute [rw] logo_url
+# @!attribute [rw] format
 #   @return [String, nil]
+#
+# @!attribute [rw] size
+#   @return [Integer, nil]
 LogoLoadMatch = Struct.new(
-  :bank_code,
-  :bank_name,
+  :bank,
   :country,
-  :logo_url,
+  :format,
+  :size,
   keyword_init: true
 )
 

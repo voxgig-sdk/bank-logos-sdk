@@ -41,7 +41,7 @@ const client = new BankLogosSDK({
 
 ```ts
 try {
-  const logo = await client.Logo().load()
+  const logo = await client.Logo().load({ bank: 'example_bank' })
   console.log(logo)
 } catch (err) {
   console.error('load failed:', err)
@@ -55,7 +55,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const logo = await client.Logo().load()
+  const logo = await client.Logo().load({ bank: "example" })
   console.log(logo)
 } catch (err) {
   console.error('load failed:', err)
@@ -122,7 +122,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = BankLogosSDK.test()
 
-const logo = await client.Logo().load()
+const logo = await client.Logo().load({ bank: 'example_bank' })
 // logo is the entity, populated with mock response data
 // — call logo.data() for the record itself
 console.log(logo)
@@ -143,7 +143,7 @@ Entity instances remember their last match and data:
 const entity = client.Logo()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ bank: 'example_bank' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -327,8 +327,31 @@ Create an instance: `const logo = client.Logo()`
 #### Example: Load
 
 ```ts
-const logo = await client.Logo().load()
+const logo = await client.Logo().load({ bank: 'bank' })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -401,7 +424,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const logo = client.Logo()
-await logo.load()
+await logo.load({ bank: "example" })
 
 // logo.data() now returns the logo data from the last `load`
 // logo.match() returns the last match criteria

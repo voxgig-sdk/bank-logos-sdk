@@ -23,8 +23,11 @@ class Logo(TypedDict, total=False):
     logo_url: str
 
 
-class LogoLoadMatch(TypedDict, total=False):
-    bank_code: str
-    bank_name: str
+class LogoLoadMatchRequired(TypedDict):
+    bank: str
+
+
+class LogoLoadMatch(LogoLoadMatchRequired, total=False):
     country: str
-    logo_url: str
+    format: str
+    size: int

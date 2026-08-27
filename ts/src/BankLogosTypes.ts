@@ -13,9 +13,9 @@ export interface Logo {
 }
 
 export interface LogoLoadMatch {
-  bank_code?: string
-  bank_name?: string
+  bank: string
   country?: string
-  logo_url?: string
+  format?: string
+  size?: number
 }
 
