@@ -24,6 +24,7 @@ main: kit: entity: logo: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "logo_url"
       req: false
       short: "URL to the bank logo image"
@@ -75,8 +76,10 @@ main: kit: entity: logo: {
           }
           method: "GET"
           orig: "/logo"
-          parts: [
-            "logo"
+          segments: [
+            {
+              lit: "logo"
+            }
           ]
           select: {
             exist: [

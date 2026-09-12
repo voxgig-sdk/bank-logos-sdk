@@ -62,6 +62,7 @@ module BankLogosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "logo_url",
               "short" => "URL to the bank logo image",
               "type" => "`$STRING`",
@@ -110,8 +111,10 @@ module BankLogosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/logo",
-                  "parts" => [
-                    "logo",
+                  "segments" => [
+                    {
+                      "lit" => "logo",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -125,6 +128,9 @@ module BankLogosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "logo",
+                  ],
                 },
               ],
             },

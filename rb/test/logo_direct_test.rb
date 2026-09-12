@@ -67,15 +67,17 @@ def logo_direct_setup(mockres)
   env = Runner.env_override({
     "BANK_LOGOS_TEST_LOGO_ENTID" => {},
     "BANK_LOGOS_TEST_LIVE" => "FALSE",
-    "BANK_LOGOS_APIKEY" => "NONE",
+    "BANK_LOGOS_APIKEY" => "",
   })
 
   live = env["BANK_LOGOS_TEST_LIVE"] == "TRUE"
 
   if live
-    merged_opts = {
+    # Merged so the generated fields win: sdk-test-control.json's
+    # test.client.options adds to the live client, it does not redirect it.
+    merged_opts = Runner.live_client_options.merge({
       "apikey" => env["BANK_LOGOS_APIKEY"],
-    }
+    })
     client = BankLogosSDK.new(merged_opts)
     return {
       client: client,

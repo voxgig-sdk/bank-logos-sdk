@@ -81,7 +81,7 @@ def logo_basic_setup(extra)
     "BANK_LOGOS_TEST_LOGO_ENTID" => idmap,
     "BANK_LOGOS_TEST_LIVE" => "FALSE",
     "BANK_LOGOS_TEST_EXPLAIN" => "FALSE",
-    "BANK_LOGOS_APIKEY" => "NONE",
+    "BANK_LOGOS_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -92,6 +92,9 @@ def logo_basic_setup(extra)
 
   if env["BANK_LOGOS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["BANK_LOGOS_APIKEY"],
       },

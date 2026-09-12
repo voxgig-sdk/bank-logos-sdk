@@ -63,15 +63,18 @@ def _logo_direct_setup(mockres):
     env = runner.env_override({
         "BANK_LOGOS_TEST_LOGO_ENTID": {},
         "BANK_LOGOS_TEST_LIVE": "FALSE",
-        "BANK_LOGOS_APIKEY": "NONE",
+        "BANK_LOGOS_APIKEY": "",
     })
 
     live = env.get("BANK_LOGOS_TEST_LIVE") == "TRUE"
 
     if live:
-        merged_opts = {
+        # sdk-test-control.json's test.client.options seeds the live
+        # client; the generated fields below overwrite anything they name.
+        merged_opts = dict(runner.live_client_options())
+        merged_opts.update({
             "apikey": env.get("BANK_LOGOS_APIKEY"),
-        }
+        })
         client = BankLogosSDK(merged_opts)
         return {
             "client": client,

@@ -50,6 +50,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "logo_url",
             ["short"] = "URL to the bank logo image",
             ["type"] = "`$STRING`",
@@ -98,8 +99,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/logo",
-                ["parts"] = {
-                  "logo",
+                ["segments"] = {
+                  {
+                    ["lit"] = "logo",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -112,6 +115,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "logo",
                 },
               },
             },

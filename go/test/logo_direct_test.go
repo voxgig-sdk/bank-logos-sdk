@@ -106,14 +106,22 @@ func logoDirectSetup(mockres any) *logoDirectSetupResult {
 	env := envOverride(map[string]any{
 		"BANK_LOGOS_TEST_LOGO_ENTID": map[string]any{},
 		"BANK_LOGOS_TEST_LIVE":    "FALSE",
-		"BANK_LOGOS_APIKEY":       "NONE",
+		"BANK_LOGOS_APIKEY":       "",
 	})
 
 	live := env["BANK_LOGOS_TEST_LIVE"] == "TRUE"
 
 	if live {
-		mergedOpts := map[string]any{
+		// sdk-test-control.json's test.client.options seeds the live
+		// client; the generated fields below overwrite anything they name.
+		mergedOpts := map[string]any{}
+		for k, v := range liveClientOptions() {
+			mergedOpts[k] = v
+		}
+		for k, v := range map[string]any{
 			"apikey": env["BANK_LOGOS_APIKEY"],
+		} {
+			mergedOpts[k] = v
 		}
 		client := sdk.NewBankLogosSDK(mergedOpts)
 
