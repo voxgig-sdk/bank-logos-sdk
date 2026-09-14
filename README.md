@@ -105,7 +105,7 @@ local result, err = client:Logo():load({ bank = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/bank-logos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bank-logos-sdk/releases) |
+| TypeScript | `@voxgig-sdk/bank-logos-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bank-logos-sdk/releases) |
 | Python | `voxgig-sdk-bank-logos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bank-logos-sdk/releases) |
 | PHP | `voxgig-sdk/bank-logos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bank-logos-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/bank-logos-sdk/go` | `go get github.com/voxgig-sdk/bank-logos-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Logo():load({ bank = "example" })
 ### TypeScript
 
 ```ts
-import { BankLogosSDK } from '@voxgig-sdk/bank-logos'
+import { BankLogosSDK } from '@voxgig-sdk/bank-logos-sdk'
 
 const client = new BankLogosSDK({
   apikey: process.env.BANK_LOGOS_APIKEY,

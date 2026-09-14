@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { BankLogosSDK } from '@voxgig-sdk/bank-logos'
+import { BankLogosSDK } from '@voxgig-sdk/bank-logos-sdk'
 
 const client = new BankLogosSDK({
   apikey: process.env.BANK_LOGOS_APIKEY,
@@ -413,7 +413,7 @@ bank-logos/
 Import the SDK from the package root:
 
 ```ts
-import { BankLogosSDK } from '@voxgig-sdk/bank-logos'
+import { BankLogosSDK } from '@voxgig-sdk/bank-logos-sdk'
 ```
 
 ### Entity state
