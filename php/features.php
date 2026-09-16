@@ -4,7 +4,10 @@ declare(strict_types=1);
 // BankLogos SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class BankLogosFeatures
@@ -14,8 +17,14 @@ class BankLogosFeatures
         switch ($name) {
             case "base":
                 return new BankLogosBaseFeature();
+            case "ratelimit":
+                return new BankLogosRatelimitFeature();
+            case "retry":
+                return new BankLogosRetryFeature();
             case "test":
                 return new BankLogosTestFeature();
+            case "timeout":
+                return new BankLogosTimeoutFeature();
             default:
                 return new BankLogosBaseFeature();
         }
@@ -31,7 +40,10 @@ class BankLogosFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

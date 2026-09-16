@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.BANK_LOGOS_TEST_LIVE;
         for (const op of ['load']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'logo.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'logo.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set BANK_LOGOS_TEST_LOGO_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "bank_code", "req": false, "short": "Official bank code or identifier", "type": "`$STRING`", "index$": 0 }, { "active": true, "name": "bank_name", "req": false, "short": "Official name of the bank", "type": "`$STRING`", "index$": 1 }, { "active": true, "name": "country", "req": false, "short": "Country code where the bank operates", "type": "`$STRING`", "index$": 2 }, { "active": true, "format": "uri", "name": "logo_url", "req": false, "short": "URL to the bank logo image", "type": "`$STRING`", "index$": 3 }], "name": "logo", "op": { "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": { "query": [{ "active": true, "example": "Chase", "kind": "query", "name": "bank", "orig": "bank", "reqd": true, "type": "`$STRING`", "index$": 0 }, { "active": true, "example": "US", "kind": "query", "name": "country", "orig": "country", "reqd": false, "type": "`$STRING`", "index$": 1 }, { "active": true, "example": "png", "kind": "query", "name": "format", "orig": "format", "reqd": false, "type": "`$STRING`", "index$": 2 }, { "active": true, "example": 256, "kind": "query", "name": "size", "orig": "size", "reqd": false, "type": "`$INTEGER`", "index$": 3 }] }, "contract": { "id": "GET /logo", "json": "{\"operationId\":\"getBankLogo\",\"parameters\":[{\"description\":\"Bank name or identifier to retrieve the logo for\",\"example\":\"Chase\",\"in\":\"query\",\"name\":\"bank\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"ISO country code to narrow down bank search\",\"example\":\"US\",\"in\":\"query\",\"name\":\"country\",\"required\":false,\"schema\":{\"pattern\":\"^[A-Z]{2}$\",\"type\":\"string\"}},{\"description\":\"Desired image format for the logo\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"png\",\"enum\":[\"png\",\"svg\",\"jpg\"],\"type\":\"string\"}},{\"description\":\"Size of the logo image in pixels\",\"in\":\"query\",\"name\":\"size\",\"required\":false,\"schema\":{\"default\":256,\"maximum\":1024,\"minimum\":32,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"bank_code\":{\"description\":\"Official bank code or identifier\",\"type\":\"string\"},\"bank_name\":{\"description\":\"Official name of the bank\",\"type\":\"string\"},\"country\":{\"description\":\"Country code where the bank operates\",\"type\":\"string\"},\"logo_url\":{\"description\":\"URL to the bank logo image\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}},\"image/jpeg\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}},\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}},\"image/svg+xml\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successfully retrieved bank logo\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Authentication error details\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Unauthorized - invalid or missing API key\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Details about the missing bank\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bank logo not found\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"retry_after\":{\"description\":\"Number of seconds to wait before retrying\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Internal error details\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication. Required for all requests.\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/logo", "segments": [{ "lit": "logo" }], "select": { "exist": ["bank", "country", "format", "size"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "logo", "name__orig": "logo", "Name": "Logo", "name_": "logo", "name-": "logo", "NAME": "LOGO", "index$": 0 }, { "active": true, "entity": "logo", "key$": "BasicLogoFlow", "kind": "basic", "name": "BasicLogoFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": { "ref": "logo_ref01", "srcdatavar": "logo_ref01_data", "suffix": "_dt0" }, "match": {}, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-logo_ref01" } }], "index$": 0 }] }, 'Logo');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -102,12 +100,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['BANK_LOGOS_TEST_LOGO_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'BANK_LOGOS_TEST_LOGO_ENTID': idmap,
         'BANK_LOGOS_TEST_LIVE': 'FALSE',
@@ -116,7 +108,13 @@ function basicSetup(extra) {
     });
     idmap = env['BANK_LOGOS_TEST_LOGO_ENTID'];
     const live = 'TRUE' === env.BANK_LOGOS_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['BANK_LOGOS_TEST_LOGO_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.BankLogosSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -129,7 +127,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -141,7 +140,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.BANK_LOGOS_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

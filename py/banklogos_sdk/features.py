@@ -1,12 +1,18 @@
 # BankLogos SDK feature factory
 
 from banklogos_sdk.feature.base_feature import BankLogosBaseFeature
+from banklogos_sdk.feature.ratelimit_feature import BankLogosRatelimitFeature
+from banklogos_sdk.feature.retry_feature import BankLogosRetryFeature
 from banklogos_sdk.feature.test_feature import BankLogosTestFeature
+from banklogos_sdk.feature.timeout_feature import BankLogosTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: BankLogosBaseFeature(),
+    "ratelimit": lambda: BankLogosRatelimitFeature(),
+    "retry": lambda: BankLogosRetryFeature(),
     "test": lambda: BankLogosTestFeature(),
+    "timeout": lambda: BankLogosTimeoutFeature(),
 }
 
 
