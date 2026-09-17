@@ -105,12 +105,12 @@ local result, err = client:Logo():load({ bank = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/bank-logos-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bank-logos-sdk/releases) |
-| Python | `voxgig-sdk-bank-logos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bank-logos-sdk/releases) |
-| PHP | `voxgig-sdk/bank-logos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bank-logos-sdk/releases) |
+| TypeScript | `@voxgig-sdk/bank-logos-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bank-logos-sdk/tags) |
+| Python | `voxgig-sdk-bank-logos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bank-logos-sdk/tags) |
+| PHP | `voxgig-sdk/bank-logos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bank-logos-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/bank-logos-sdk/go` | `go get github.com/voxgig-sdk/bank-logos-sdk/go@latest` |
-| Ruby | `voxgig-sdk-bank-logos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bank-logos-sdk/releases) |
-| Lua | `voxgig-sdk-bank-logos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bank-logos-sdk/releases) |
+| Ruby | `voxgig-sdk-bank-logos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bank-logos-sdk/tags) |
+| Lua | `voxgig-sdk-bank-logos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/bank-logos-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/bank-logos-sdk/go-cli` | `go install github.com/voxgig-sdk/bank-logos-sdk/go-cli/cmd/bank-logos@latest` |
 | Go MCP server | `github.com/voxgig-sdk/bank-logos-sdk/go-mcp` | `go get github.com/voxgig-sdk/bank-logos-sdk/go-mcp@latest` |
 

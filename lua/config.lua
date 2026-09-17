@@ -77,6 +77,7 @@ local function make_config()
       base = "https://api.bankconv.com",
       auth = {
         prefix = "",
+        name = "X-API-Key",
       },
       headers = {
         ["content-type"] = "application/json",
