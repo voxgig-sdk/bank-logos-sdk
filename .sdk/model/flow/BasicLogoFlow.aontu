@@ -1,0 +1,28 @@
+# BasicLogoFlow
+
+main: kit: flow: BasicLogoFlow:
+{
+  entity: "logo",
+  kind: "basic",
+  name: "BasicLogoFlow",
+  step: [
+    {
+      i: {
+        ref: "logo_ref01",
+        srcdatavar: "logo_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-logo_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLogoFlow"
+}

@@ -1,0 +1,112 @@
+# Entity: logo
+
+main: kit: entity: logo: {
+
+  alias: field: {}
+
+  fields: {
+    bank_code: {
+      h: "Bank Code"
+      n: "bank_code"
+      r: false
+      sh: "Official bank code or identifier"
+      t: "`$STRING`"
+    }
+    bank_name: {
+      h: "Bank Name"
+      n: "bank_name"
+      r: false
+      sh: "Official name of the bank"
+      t: "`$STRING`"
+    }
+    country: {
+      h: "Country"
+      n: "country"
+      r: false
+      sh: "Country code where the bank operates"
+      t: "`$STRING`"
+    }
+    logo_url: {
+      fo: "uri"
+      h: "Logo Url"
+      n: "logo_url"
+      r: false
+      sh: "URL to the bank logo image"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "logo"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /logo"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "Chase"
+                k: "query"
+                n: "bank"
+                or: "bank"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "US"
+                k: "query"
+                n: "country"
+                or: "country"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "png"
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 256
+                k: "query"
+                n: "size"
+                or: "size"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/logo"
+          q: {
+            exist: [
+              "bank"
+              "country"
+              "format"
+              "size"
+            ]
+          }
+          s: [
+            {
+              lit: "logo"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -103,24 +103,28 @@ module BankLogosConfig
           "fields" => [
             {
               "name" => "bank_code",
-              "short" => "Official bank code or identifier",
+              "title" => "Bank Code",
               "type" => "`$STRING`",
+              "short" => "Official bank code or identifier",
             },
             {
               "name" => "bank_name",
-              "short" => "Official name of the bank",
+              "title" => "Bank Name",
               "type" => "`$STRING`",
+              "short" => "Official name of the bank",
             },
             {
               "name" => "country",
-              "short" => "Country code where the bank operates",
+              "title" => "Country",
               "type" => "`$STRING`",
+              "short" => "Country code where the bank operates",
             },
             {
-              "format" => "uri",
               "name" => "logo_url",
-              "short" => "URL to the bank logo image",
+              "title" => "Logo Url",
               "type" => "`$STRING`",
+              "short" => "URL to the bank logo image",
+              "format" => "uri",
             },
           ],
           "name" => "logo",
@@ -130,39 +134,6 @@ module BankLogosConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => "Chase",
-                        "kind" => "query",
-                        "name" => "bank",
-                        "orig" => "bank",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "US",
-                        "kind" => "query",
-                        "name" => "country",
-                        "orig" => "country",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "png",
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 256,
-                        "kind" => "query",
-                        "name" => "size",
-                        "orig" => "size",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/logo",
@@ -171,6 +142,47 @@ module BankLogosConfig
                       "lit" => "logo",
                     },
                   ],
+                  "parts" => [
+                    "logo",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "bank",
+                        "orig" => "bank",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                        "example" => "Chase",
+                      },
+                      {
+                        "name" => "country",
+                        "orig" => "country",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "US",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "png",
+                      },
+                      {
+                        "name" => "size",
+                        "orig" => "size",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 256,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "bank",
@@ -179,13 +191,6 @@ module BankLogosConfig
                       "size",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "logo",
-                  ],
                 },
               ],
             },

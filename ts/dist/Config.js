@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -118,24 +111,28 @@ class Config {
             "fields": [
                 {
                     "name": "bank_code",
-                    "short": "Official bank code or identifier",
-                    "type": "`$STRING`"
+                    "title": "Bank Code",
+                    "type": "`$STRING`",
+                    "short": "Official bank code or identifier"
                 },
                 {
                     "name": "bank_name",
-                    "short": "Official name of the bank",
-                    "type": "`$STRING`"
+                    "title": "Bank Name",
+                    "type": "`$STRING`",
+                    "short": "Official name of the bank"
                 },
                 {
                     "name": "country",
-                    "short": "Country code where the bank operates",
-                    "type": "`$STRING`"
+                    "title": "Country",
+                    "type": "`$STRING`",
+                    "short": "Country code where the bank operates"
                 },
                 {
-                    "format": "uri",
                     "name": "logo_url",
+                    "title": "Logo Url",
+                    "type": "`$STRING`",
                     "short": "URL to the bank logo image",
-                    "type": "`$STRING`"
+                    "format": "uri"
                 }
             ],
             "name": "logo",
@@ -145,39 +142,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "Chase",
-                                        "kind": "query",
-                                        "name": "bank",
-                                        "orig": "bank",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "US",
-                                        "kind": "query",
-                                        "name": "country",
-                                        "orig": "country",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "png",
-                                        "kind": "query",
-                                        "name": "format",
-                                        "orig": "format",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 256,
-                                        "kind": "query",
-                                        "name": "size",
-                                        "orig": "size",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/logo",
@@ -186,6 +150,47 @@ class Config {
                                     "lit": "logo"
                                 }
                             ],
+                            "parts": [
+                                "logo"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "bank",
+                                        "orig": "bank",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "reqd": true,
+                                        "example": "Chase"
+                                    },
+                                    {
+                                        "name": "country",
+                                        "orig": "country",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "US"
+                                    },
+                                    {
+                                        "name": "format",
+                                        "orig": "format",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "png"
+                                    },
+                                    {
+                                        "name": "size",
+                                        "orig": "size",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 256
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "bank",
@@ -193,14 +198,7 @@ class Config {
                                     "format",
                                     "size"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "logo"
-                            ]
+                            }
                         }
                     ]
                 }
